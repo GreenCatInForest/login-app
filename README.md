@@ -15,4 +15,4 @@ Try to log in and see the process of form validation and the result of success o
 
 ## Wireframes
 
-![mobile wireframe](/src/assets/images/wireframes/login-app-wireframe.png "mobile wireframe" width="500px)
+<img src="/src/assets/images/wireframes/login-app-wireframe.png" width="500px"/>
