@@ -1,10 +1,25 @@
 import { useState } from "react";
 
 export const Login = () => {
-  // check if handleChange working
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  // check if states are working
+  // console.log(loginEmail, loginPassword);
+
   const handleChange = (event) => {
-    console.log(event.target.value);
+    // check if handleChange working
+    // console.log(event.target.value);
+
+    // took email and password values from login form
+    if (event.target.name === "email") {
+      setLoginEmail(event.target.value);
+    } else if (event.target.name === "password") {
+      setLoginPassword(event.target.value);
+    }
   };
+  console.log("loginEmail: " + loginEmail);
+  console.log("loginPassword: " + loginPassword);
 
   return (
     <div>
