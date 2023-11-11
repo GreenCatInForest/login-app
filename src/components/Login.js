@@ -7,6 +7,17 @@ export const Login = () => {
   // check if states are working
   // console.log(loginEmail, loginPassword);
 
+  let userDatas = [
+    {
+      userLogin: "Jon Snow",
+      password: "KnowNothingExceptTheNightKingisREAL1111",
+    },
+    {
+      userLogin: "Arya Stark",
+      password: "StickThemWithThePoinEnd",
+    },
+  ];
+
   const handleChange = (event) => {
     // check if handleChange working
     // console.log(event.target.value);
@@ -20,6 +31,18 @@ export const Login = () => {
   };
   console.log("loginEmail: " + loginEmail);
   console.log("loginPassword: " + loginPassword);
+
+  const handleLogin = (LoginEmail, LoginPassword) => {
+    userDatas.forEach((userData) => {
+      if (
+        userData.userLogin === LoginEmail &&
+        userData.userPassword === LoginPassword
+      ) {
+        console.log("+");
+      }
+      console.log("-");
+    });
+  };
 
   return (
     <div className="login">
@@ -47,7 +70,7 @@ export const Login = () => {
           placeholder="Enter your password"
         />
       </form>
-      <button className="loginButton" type="submit">
+      <button className="loginButton" type="button" onClick={handleLogin}>
         Login
       </button>
     </div>
