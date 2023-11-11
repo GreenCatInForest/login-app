@@ -4,7 +4,7 @@ import { DataExamplesLogin } from "./components/DataExamplesLogin";
 
 export const App = () => {
   return (
-    <div>
+    <div className="app">
       <Header />
       <Login />
       <DataExamplesLogin />

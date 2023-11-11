@@ -22,7 +22,7 @@ export const Login = () => {
   console.log("loginPassword: " + loginPassword);
 
   return (
-    <div>
+    <div className="login">
       <form className="loginForm">
         <label htmlFor="email" className="form-label">
           E-mail
@@ -47,7 +47,9 @@ export const Login = () => {
           placeholder="Enter your password"
         />
       </form>
-      <button type="submit">Login</button>
+      <button className="loginButton" type="submit">
+        Login
+      </button>
     </div>
   );
 };

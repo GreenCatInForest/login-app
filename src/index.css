@@ -1,13 +1,102 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* FOR MOBILE SCREENS */
+
+:root {
+  font-size: 16px;
+  --bgColor: #000;
+  --onBg: #ffffff;
+
+  --sizeXs: 0.5rem;
+  --sizeSm: calc(var(--sizeXs) * 1.5);
+  --sizeMd: calc(var(--sizeSm) * 1.5);
+  --sizeLg: calc(var(--sizeMd) * 1.5);
+  --sizeXl: calc(var(--sizeLg) * 1.5);
+  --sizeXXl: calc(var(--sizeXl) * 1.5);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* CSS Reset for all elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  background-image: url("");
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 100svw;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: var(--sizeXXl) auto;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+}
+/* Login styles */
+
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.loginForm input {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.loginForm > * {
+}
+
+.loginButton {
+  padding: 0.5rem 1.5rem;
+}
+/* FOR DESKTOP SCREENS */
+
+@media screen and (min-width: 601px) {
+  /* General style*/
+
+  * {
+    max-width: 100%;
+  }
+
+  /* Body style*/
+
+  .app {
+    gap: 2rem;
+    margin: var(--sizeXXl) auto;
+  }
+
+  /* Header style*/
+
+  /* Login styles */
+
+  .login {
+    gap: 1.5rem;
+  }
 }
