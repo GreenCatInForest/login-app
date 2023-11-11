@@ -26,6 +26,8 @@
 
 body {
   display: flex;
+  background: var(--onBg);
+  color: var(--bgColor);
   align-items: center;
   background-image: url("");
   flex-direction: column;
@@ -97,6 +99,6 @@ body {
   /* Login styles */
 
   .login {
-    gap: 1.5rem;
+    gap: 2rem;
   }
 }
