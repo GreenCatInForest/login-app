@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export const Login = ({ userDatas, onSuccess, onError, setUserName }) => {
+export const Login = ({
+  userDatas,
+  setUserImg,
+  onSuccess,
+  onError,
+  setUserName,
+}) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
 
@@ -36,6 +42,7 @@ export const Login = ({ userDatas, onSuccess, onError, setUserName }) => {
           ) {
             onSuccess();
             setUserName(userDatas.userName);
+            setUserImg(userDatas.userImg);
           }
           // error: email correct, password wrong
           else if (
