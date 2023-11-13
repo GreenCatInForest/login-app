@@ -1,21 +1,6 @@
 import { useState } from "react";
 
-let userDatas = [
-  {
-    userEmail: "Jon Snow",
-    userPassword: "KnowNothingExceptTheNightKingisREAL1111",
-  },
-  {
-    userEmail: "Arya Stark",
-    userPassword: "StickThemWithThePoinEnd",
-  },
-  {
-    userEmail: "1",
-    userPassword: "1",
-  },
-];
-
-export const Login = ({ onSuccess, onError }) => {
+export const Login = ({ userDatas, onSuccess, onError, setUserName }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
 
@@ -50,6 +35,7 @@ export const Login = ({ onSuccess, onError }) => {
             inputPassword === userDatas.userPassword
           ) {
             onSuccess();
+            setUserName(userDatas.userName);
           }
           // error: email correct, password wrong
           else if (
@@ -59,9 +45,10 @@ export const Login = ({ onSuccess, onError }) => {
             onError();
             setTypeError("Wrong credentials");
           }
+        } else if (!inputPassword) {
+          setTypeError("Please enter your password");
+          onError();
         }
-        setTypeError("Please enter your password");
-        onError();
       }
       // case: input email and password empty
       else if (inputEmail === "" && inputPassword === "") {
