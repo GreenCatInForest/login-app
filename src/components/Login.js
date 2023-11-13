@@ -103,7 +103,6 @@ export const Login = ({
 
   return (
     <div className="login">
-      {typeError ? alert(typeError) : null}
       <form className="loginForm" onSubmit={handleLogin}>
         <label htmlFor="email" className="form-label">
           E-mail
@@ -131,6 +130,7 @@ export const Login = ({
           Login
         </button>
       </form>
+      {typeError ? <div className="errorMessage">{typeError}!</div> : null}
     </div>
   );
 };
