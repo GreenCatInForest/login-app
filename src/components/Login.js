@@ -1,59 +1,56 @@
 import { useState } from "react";
 
+let userDatas = [
+  {
+    userEmail: "Jon Snow",
+    userPassword: "KnowNothingExceptTheNightKingisREAL1111",
+  },
+  {
+    userEmail: "Arya Stark",
+    userPassword: "StickThemWithThePoinEnd",
+  },
+  {
+    userEmail: "1",
+    userPassword: "1",
+  },
+];
+
 export const Login = () => {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-
-  // check if states are working
-  // console.log(loginEmail, loginPassword);
-
-  let userDatas = [
-    {
-      userLogin: "Jon Snow",
-      password: "KnowNothingExceptTheNightKingisREAL1111",
-    },
-    {
-      userLogin: "Arya Stark",
-      password: "StickThemWithThePoinEnd",
-    },
-  ];
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
 
   const handleChange = (event) => {
-    // check if handleChange working
-    // console.log(event.target.value);
+    // test handleChange works
+    console.log(event.target.value);
 
-    // took email and password values from login form
+    // take email and password from login form
     if (event.target.name === "email") {
-      setLoginEmail(event.target.value);
-    } else if (event.target.name === "password") {
-      setLoginPassword(event.target.value);
+      setInputEmail(event.target.value);
+    }
+
+    if (event.target.name === "password") {
+      setInputPassword(event.target.value);
     }
   };
-  console.log("loginEmail: " + loginEmail);
-  console.log("loginPassword: " + loginPassword);
+  // test if states are working
+  // console.log(loginEmail, loginPassword);
+  // console.log("loginEmail: " + loginEmail);
+  // console.log("loginPassword: " + loginPassword);
 
-  const handleLogin = (LoginEmail, LoginPassword) => {
-    userDatas.forEach((userData) => {
-      if (
-        userData.userLogin === LoginEmail &&
-        userData.userPassword === LoginPassword
-      ) {
-        console.log("+");
-      }
-      console.log("-");
-    });
+  const handleLogin = (event) => {
+    event.preventDefault();
   };
 
   return (
     <div className="login">
-      <form className="loginForm">
+      <form className="loginForm" onSubmit={handleLogin}>
         <label htmlFor="email" className="form-label">
           E-mail
         </label>
         <input
           onChange={handleChange}
           name="email"
-          type="email"
+          type="text"
           id="email"
           className="form-control"
           placeholder="Enter your email address"
@@ -69,10 +66,10 @@ export const Login = () => {
           className="form-control"
           placeholder="Enter your password"
         />
+        <button className="loginButton" type="submit">
+          Login
+        </button>
       </form>
-      <button className="loginButton" type="button" onClick={handleLogin}>
-        Login
-      </button>
     </div>
   );
 };
