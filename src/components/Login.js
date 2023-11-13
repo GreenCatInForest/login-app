@@ -15,9 +15,11 @@ let userDatas = [
   },
 ];
 
-export const Login = () => {
+export const Login = ({ onSuccess, onFaillure }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
+  // console.log(onSuccess);
+  // console.log(onFaillure);
 
   const handleChange = (event) => {
     // test handleChange works
@@ -32,13 +34,30 @@ export const Login = () => {
       setInputPassword(event.target.value);
     }
   };
-  // test if states are working
-  // console.log(loginEmail, loginPassword);
-  // console.log("loginEmail: " + loginEmail);
-  // console.log("loginPassword: " + loginPassword);
 
   const handleLogin = (event) => {
     event.preventDefault();
+    userDatas.forEach((userData) => {
+      if (
+        inputEmail === userData.userEmail &&
+        inputPassword === userData.userPassword
+      ) {
+        onSuccess();
+        console.log("match" + inputEmail + inputPassword);
+      } else if (
+        inputEmail === userData.userEmail &&
+        inputPassword !== userData.userPassword
+      ) {
+        alert("the password doesnt match");
+      }
+    });
+
+    // let currentUserData = userDatas.find(
+    //   (userDatas) =>
+    //     inputEmail === userDatas.userEmail &&
+    //     inputPassword === userDatas.userPassword
+    // );
+    // currentUserData?successLogin():faillureLogin();
   };
 
   return (
