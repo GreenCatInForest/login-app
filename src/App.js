@@ -11,14 +11,14 @@ export const App = () => {
   const onSuccess = () => setIsLoggedIn(true);
   console.log(isLoggedIn);
 
-  const onFaillure = () => setIsLoggedIn(false);
+  const onError = () => setIsLoggedIn(false);
 
   return (
     <div className="app">
       {!isLoggedIn ? (
         <div>
           <Header />
-          <Login onSuccess={onSuccess} onFaillure={onFaillure} />
+          <Login onSuccess={onSuccess} onError={onError} />
           <DataExamplesLogin />
         </div>
       ) : (

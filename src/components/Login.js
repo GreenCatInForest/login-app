@@ -15,11 +15,13 @@ let userDatas = [
   },
 ];
 
-export const Login = ({ onSuccess, onFaillure }) => {
+export const Login = ({ onSuccess, onError }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   // console.log(onSuccess);
   // console.log(onFaillure);
+
+  const [typeError, setTypeError] = useState("");
 
   const handleChange = (event) => {
     // test handleChange works
@@ -37,20 +39,35 @@ export const Login = ({ onSuccess, onFaillure }) => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    userDatas.forEach((userData) => {
-      if (
-        inputEmail === userData.userEmail &&
-        inputPassword === userData.userPassword
-      ) {
-        onSuccess();
-        console.log("match" + inputEmail + inputPassword);
-      } else if (
-        inputEmail === userData.userEmail &&
-        inputPassword !== userData.userPassword
-      ) {
-        alert("the password doesnt match");
+
+    userDatas.find((userDatas) => {
+      if (inputEmail !== userDatas.userEmail) {
+        onError();
+        setTypeError("no email");
+      } else if (inputEmail === userDatas.userEmail) {
+        if (inputPassword === userDatas.userPassword) {
+          onSuccess();
+        } else if (inputPassword !== userDatas.userPassword) {
+          setTypeError("incorrect password");
+        } else if (inputEmail !== userDatas.userEmail) {
+          setTypeError("incorrect email");
+        }
       }
     });
+    // userDatas.forEach((userData) => {
+    //   if (
+    //     inputEmail === userData.userEmail &&
+    //     inputPassword === userData.userPassword
+    //   ) {
+    //     onSuccess();
+    //     console.log("match" + inputEmail + inputPassword);
+    //   } else if (
+    //     inputEmail === userData.userEmail &&
+    //     inputPassword !== userData.userPassword
+    //   ) {
+    //     alert("the password doesnt match");
+    //   }
+    // });
 
     // let currentUserData = userDatas.find(
     //   (userDatas) =>
@@ -62,6 +79,7 @@ export const Login = ({ onSuccess, onFaillure }) => {
 
   return (
     <div className="login">
+      {typeError ? alert(typeError) : null}
       <form className="loginForm" onSubmit={handleLogin}>
         <label htmlFor="email" className="form-label">
           E-mail
