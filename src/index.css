@@ -74,14 +74,16 @@ body {
 .loginForm {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
   width: 60%;
-  gap: 0.5rem;
+  font-size: var(--sizeMd);
+  gap: 1rem;
 }
 
 .loginForm input {
   text-align: center;
   border-bottom: 1px solid black;
+  padding: 0.5rem;
 }
 
 .loginButton {
@@ -109,7 +111,7 @@ body {
 .errorMessage {
   background-color: white;
   padding: 1rem 2rem;
-  width: 50%;
+  width: 70%;
   border-radius: 2rem;
   font-weight: 700;
   /* font-family: "Satisfy", cursive; */
@@ -124,15 +126,22 @@ body {
 
 .dataExamplesData {
   display: grid;
-  grid-template-columns: auto auto;
-  justify-content: space-evenly;
+  grid-template-columns: repeat(1, auto auto);
+  text-align: left;
   align-content: center;
-  gap: 0.1rem;
+  align-items: stretch;
+  gap: 2rem;
 }
+
+.dataExamplesData img {
+  height: var(--sizeMd);
+}
+
 .dataExamplesData > p {
   border: 1px solid black;
   font-size: var(--sizeSm);
   padding: 1rem;
+  border-radius: 2rem;
 }
 
 /* FOR DESKTOP SCREENS */
@@ -156,6 +165,75 @@ body {
   /* Login styles */
 
   .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     gap: 2rem;
+  }
+
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 60%;
+    gap: 0.5rem;
+  }
+
+  .loginForm input {
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+
+  .loginButton {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    background-image: radial-gradient(
+      circle farthest-corner at 10% 20%,
+      rgba(56, 207, 191, 1) 0%,
+      rgba(10, 70, 147, 1) 90.2%
+    );
+    font-weight: 700;
+    font-size: var(--sizeMd);
+  }
+
+  .loginButton:hover {
+    background-image: radial-gradient(
+      circle farthest-corner at 10% 20%,
+      rgba(100, 43, 115, 1) 0%,
+      rgba(4, 0, 4, 1) 90%
+    );
+    color: white;
+  }
+
+  .errorMessage {
+    background-color: white;
+    padding: 1rem 2rem;
+    width: 60%;
+    border-radius: 2rem;
+    font-weight: 700;
+    /* font-family: "Satisfy", cursive; */
+  }
+  /* Data Examples */
+
+  .dataExamplesLogin {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: var(--sizeLg);
+  }
+
+  .dataExamplesData {
+    display: grid;
+    grid-template-columns: repeat(2, auto auto);
+    text-align: left;
+    align-content: center;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .dataExamplesData img {
+    height: var(--sizeMd);
   }
 }
