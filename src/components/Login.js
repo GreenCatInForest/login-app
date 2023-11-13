@@ -18,8 +18,6 @@ let userDatas = [
 export const Login = ({ onSuccess, onError }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  // console.log(onSuccess);
-  // console.log(onFaillure);
 
   const [typeError, setTypeError] = useState("");
 
@@ -39,43 +37,71 @@ export const Login = ({ onSuccess, onError }) => {
 
   const handleLogin = (event) => {
     event.preventDefault();
+    // check password functionality with find
 
     userDatas.find((userDatas) => {
-      if (inputEmail !== userDatas.userEmail) {
-        onError();
-        setTypeError("no email");
-      } else if (inputEmail === userDatas.userEmail) {
-        if (inputPassword === userDatas.userPassword) {
-          onSuccess();
-        } else if (inputPassword !== userDatas.userPassword) {
-          setTypeError("incorrect password");
-        } else if (inputEmail !== userDatas.userEmail) {
-          setTypeError("incorrect email");
+      // success case: input email exist
+      if (inputEmail) {
+        // success case: input password exist
+        if (inputPassword) {
+          // success case: login accepted
+          if (
+            inputEmail === userDatas.userEmail &&
+            inputPassword === userDatas.userPassword
+          ) {
+            onSuccess();
+          }
+          // error: email correct, password wrong
+          else if (
+            inputEmail === userDatas.userEmail &&
+            inputPassword !== userDatas.userPassword
+          ) {
+            onError();
+            setTypeError("Wrong credentials");
+          }
         }
+        setTypeError("Please enter your password");
+        onError();
       }
+      // case: input email and password empty
+      else if (inputEmail === "" && inputPassword === "") {
+        setTypeError("Please enter your email and a password");
+        onError();
+      } else if (inputEmail === "") {
+        setTypeError("Please enter your email");
+        onError();
+      }
+      // error: email not find, password doesn't matter
     });
-    // userDatas.forEach((userData) => {
-    //   if (
-    //     inputEmail === userData.userEmail &&
-    //     inputPassword === userData.userPassword
-    //   ) {
-    //     onSuccess();
-    //     console.log("match" + inputEmail + inputPassword);
-    //   } else if (
-    //     inputEmail === userData.userEmail &&
-    //     inputPassword !== userData.userPassword
-    //   ) {
-    //     alert("the password doesnt match");
-    //   }
-    // });
-
-    // let currentUserData = userDatas.find(
-    //   (userDatas) =>
-    //     inputEmail === userDatas.userEmail &&
-    //     inputPassword === userDatas.userPassword
-    // );
-    // currentUserData?successLogin():faillureLogin();
   };
+
+  // check password functionality with forEach
+
+  //   userDatas.forEach((userData) => {
+  //     if (
+  //       inputEmail === userData.userEmail &&
+  //       inputPassword === userData.userPassword
+  //     ) {
+  //       onSuccess();
+  //       console.log("match" + inputEmail + inputPassword);
+  //     } else if (
+  //       inputEmail === userData.userEmail &&
+  //       inputPassword !== userData.userPassword
+  //     ) {
+  //       onError();
+  //       setTypeError("the password doesnt match");
+  //     } else if (inputEmail === "" && inputPassword === "") {
+  //       onError();
+  //       setTypeError("enter the email and the password");
+  //     } else if (
+  //       inputEmail !== userData.userEmail &&
+  //       inputPassword !== userData.userPassword
+  //     ) {
+  //       onError();
+  //       setTypeError("the email isn't registered");
+  //     }
+  //   });
+  // };
 
   return (
     <div className="login">
