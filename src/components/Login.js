@@ -44,6 +44,12 @@ export const Login = ({
             setUserName(userDatas.userName);
             setUserImg(userDatas.userImg);
           }
+          // error: email not find, password doesn't matter
+          if (inputEmail !== userDatas.userEmail) {
+            onError();
+            setTypeError("It seems your email isn't registered yet");
+          }
+
           // error: email correct, password wrong
           else if (
             inputEmail === userDatas.userEmail &&
@@ -57,11 +63,7 @@ export const Login = ({
           onError();
         }
       }
-      // error: email not find, password doesn't matter
-      else if (!inputEmail) {
-        setTypeError("Please enter your email");
-        onError();
-      }
+
       // case: input email and password empty
       else if (inputEmail === "" && inputPassword === "") {
         setTypeError("Please enter your email and a password");
@@ -73,7 +75,7 @@ export const Login = ({
     });
   };
 
-  // check password functionality with forEach
+  // password functionality with forEach
 
   //   userDatas.forEach((userData) => {
   //     if (
