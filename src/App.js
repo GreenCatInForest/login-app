@@ -51,6 +51,7 @@ export const App = () => {
             setUserImg={setUserImg}
           />
           <DataExamplesLogin />
+          <div> YK 2023</div>
         </div>
       ) : (
         <div>
