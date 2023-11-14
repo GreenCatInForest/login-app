@@ -31,45 +31,39 @@ export const Login = ({
     // check password functionality with find
 
     userDatas.find((userDatas) => {
-      // success case: input email exist
-      if (inputEmail) {
-        // success case: input password exist
-        if (inputPassword) {
-          // success case: login accepted
-          if (
-            inputEmail === userDatas.userEmail &&
-            inputPassword === userDatas.userPassword
-          ) {
-            onSuccess();
-            setUserName(userDatas.userName);
-            setUserImg(userDatas.userImg);
-          }
-          // error: email not find, password doesn't matter
-          if (inputEmail !== userDatas.userEmail) {
-            onError();
-            setTypeError("It seems your email isn't registered yet");
-          }
-
-          // error: email correct, password wrong
-          else if (
-            inputEmail === userDatas.userEmail &&
-            inputPassword !== userDatas.userPassword
-          ) {
-            onError();
-            setTypeError("Wrong credentials");
-          }
-        } else if (!inputPassword) {
-          setTypeError("Please enter your password");
-          onError();
+      // success case: login accepted
+      if (inputEmail === userDatas.userEmail) {
+        if (inputPassword === userDatas.userPassword) {
+          onSuccess();
+          setUserName(userDatas.userName);
+          setUserImg(userDatas.userImg);
         }
+
+        // error: email not find, password doesn't matter
+        else if (inputEmail !== userDatas.userEmail) {
+          onError();
+          setTypeError("It seems your email isn't registered yet");
+        }
+
+        // error: email correct, password wrong
+        else if (
+          inputEmail === userDatas.userEmail &&
+          inputPassword !== userDatas.userPassword
+        ) {
+          onError();
+          setTypeError("Wrong credentials");
+        }
+      } else if (!inputEmail) {
+        setTypeError("Please enter your email");
+        onError();
+      } else if (!inputPassword) {
+        setTypeError("Please enter your password");
+        onError();
       }
 
       // case: input email and password empty
       else if (inputEmail === "" && inputPassword === "") {
         setTypeError("Please enter your email and a password");
-        onError();
-      } else if (inputEmail === "") {
-        setTypeError("Please enter your email");
         onError();
       }
     });
