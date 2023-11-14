@@ -20,7 +20,7 @@ export const DataExamplesLogin = () => {
         <p>StickThemWithThePoinEnd</p>
 
         <img src={emailIcon} alt="" />
-        <p>Email: 1</p>
+        <p>Email: 1@1</p>
         <img src={passwordIcon} alt="" />
         <p>Password: 1</p>
       </div>

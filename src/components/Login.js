@@ -112,7 +112,7 @@ export const Login = ({
         <input
           onChange={handleChange}
           name="email"
-          type="text"
+          type="email"
           id="email"
           className="form-control"
           placeholder="Enter your email address"
